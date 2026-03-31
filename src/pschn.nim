@@ -13,10 +13,10 @@ proc loadEnv() =
 
 proc getAuth(): string =
   loadEnv()
-  let pub = getEnv("SNDCLD_PUBLIC")
-  let sec = getEnv("SNDCLD_SECRET")
+  let pub = getEnv("PSCHN_PUBLIC")
+  let sec = getEnv("PSCHN_SECRET")
   if pub == "" or sec == "":
-    quit "Error: SNDCLD_PUBLIC and SNDCLD_SECRET must be set", 1
+    quit "Error: PSCHN_PUBLIC and PSCHN_SECRET must be set", 1
   encode(pub & ":" & sec)
 
 proc apiGet(path: string): JsonNode =
