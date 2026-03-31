@@ -17,22 +17,22 @@ type Config = object
 proc getConfig(): Config =
   loadConfig()
   result = Config(
-    apiKey: getEnv("DHL_API_KEY"),
-    user: getEnv("DHL_USER"),
-    pass: getEnv("DHL_PASS"),
-    billingNumber: getEnv("DHL_BILLING_NUMBER"),
-    senderName: getEnv("SENDER_NAME"),
-    senderStreet: getEnv("SENDER_STREET"),
-    senderPostalCode: getEnv("SENDER_POSTAL_CODE"),
-    senderCity: getEnv("SENDER_CITY"),
-    sandbox: getEnv("DHL_SANDBOX", "true") == "true",
+    apiKey: getEnv("PSCHN_API_KEY"),
+    user: getEnv("PSCHN_USER"),
+    pass: getEnv("PSCHN_PASS"),
+    billingNumber: getEnv("PSCHN_BILLING_NUMBER"),
+    senderName: getEnv("PSCHN_SENDER_NAME"),
+    senderStreet: getEnv("PSCHN_SENDER_STREET"),
+    senderPostalCode: getEnv("PSCHN_SENDER_POSTAL_CODE"),
+    senderCity: getEnv("PSCHN_SENDER_CITY"),
+    sandbox: getEnv("PSCHN_SANDBOX", "true") == "true",
   )
   if result.apiKey == "":
-    quit "DHL_API_KEY not set", 1
+    quit "PSCHN_API_KEY not set", 1
   if result.billingNumber == "":
-    quit "DHL_BILLING_NUMBER not set", 1
+    quit "PSCHN_BILLING_NUMBER not set", 1
   if result.senderName == "":
-    quit "SENDER_NAME not set", 1
+    quit "PSCHN_SENDER_NAME not set", 1
 
 proc buy*(name: string, street: string, postalCode: string, city: string,
     weight: int = 2000, output: string = "label.pdf"): int =
